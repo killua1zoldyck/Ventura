@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+      <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+      <title>Ventura</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.min.css "/>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+      <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <link rel = "stylesheet" type="text/css" href="nittStudents.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <style>
+  </style>
+
+  <body>
+  <div class = "container-fluid">
+
+      <div class = "center" id="response">
+
+            <form id="myForm" class = "formReg" method = "post">
+            <div class = "row center">
+              <div class = "col-xs-12">
+                <h1>VENTURA REGISTRATION</h1>
+              </div>
+            </div>
+
+                  <div class = "row">
+                        <div class="col-xs-12">
+                          <div class="form-group">
+                              <label for="name">How did you get to know about ventura?</label>
+                              <input type="text" id="knowAbout" name="knowAbout" placeholder="How did you get to know about ventura?" class = "ecellInput" class="form-control" required="required">
+                          </div>
+                        </div>
+                  </div>
+
+                  <div class = "row">
+                        <div class="col-xs-12">
+                          <div class="form-group">
+                              <label for="link">LinkedIn link of the founders (2 max):</label>
+                              <input type="text" id="link" name="link" placeholder="LinkedIn link of the founders (2 max)" class = "ecellInput" class="form-control" required="required">
+                          </div>
+                        </div>
+                  </div>
+
+                  <div class = "row">
+                    <div class="col-xs-12">
+                      <input type="submit" value="Register" class = "btn btn-block submitBtn" id="submit">
+                    </div>
+                  </div>
+      </form>
+      </div>
+  </div>
+  <script>
+
+            $('#myForm').bootstrapValidator({
+              framework: 'bootstrap',
+              // console.log(q1, q2);
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            knowAbout: {
+                validators: {
+                    notEmpty: {
+                        message: 'The  name is required and cannot be empty'
+                    }
+                }
+            },
+
+            link: {
+                validators: {
+                    notEmpty: {
+                        message: 'The link is required'
+                    }
+                }
+            },
+        },
+        submitHandler: function(validator, form, submitButton) {
+          var data = $('form').serializeArray();
+          console.log("Hey", data);
+
+            $.ajax({
+            type: "POST",
+            url: "regNitt.php",
+            data: {knowAbout: data[0].value, link: data[1].value},
+            success: function(data){$('#response').html(data);},
+             fail: function(data){
+            $('#response').html('There is an error!');
+                                    }
+                    });
+        }
+    });
+  </script>
+  </body>
+  </html>

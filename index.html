@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ventura Registration</title>
+    <style>
+      .remove {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <div id="nittCheck">
+        <form>
+          <p>Are you from NIT-T?</p>
+          <input type="radio" name="college" onclick="collegeCheck(this.value)" value="yes">YES
+          <input type="radio" name="college" onclick="collegeCheck(this.value)" value="no">NO<br>
+        </form>
+      </div>
+      <div id="nitt" class="remove">
+        <form>
+          <p>Have you filled the E-cell Commuity form?</p>
+          <input type="radio" name="community" onclick="communityCheck(this.value)" value="yes">YES
+          <input type="radio" name="community" onclick="communityCheck(this.value)" value="no">NO<br>
+        </form>
+      </div>
+      <div id="notNitt" class="remove">
+        <p>Welcome Non-NITTIAN</p>
+      </div>
+    </center>
+  </body>
+  <script>
+  function communityCheck(community) {
+    if(community === "yes") {
+      window.location = "http://localhost/ecFilled.html"
+    }
+    else {
+      window.location = "http://ecell-nitt.org/ec.html"
+    }
+  }
+  function collegeCheck(college) {
+    console.log(college);
+    if(college === "yes") {
+      nitt.style.display = 'block';
+      document.getElementById('nittCheck').style.display = 'none';
+    }
+    else {
+      notNitt.style.display = 'block';
+      document.getElementById('nittCheck').style.display = 'none';
+    }
+  }
+  </script>
+</html>

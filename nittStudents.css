@@ -1,0 +1,42 @@
+.center {
+	text-align: center;
+}
+.formReg {
+	background-color: #587272;
+    color: white;
+    display: inline-block;
+    text-align: left;
+    padding: 80px;
+    margin: 10px 10px;
+    border: 1px solid #ccc;
+}
+
+.ecellInput {
+  width: 100%;
+  padding: 20px 20px;
+  margin: 10px 10px;
+  display: inline-block;
+  border-bottom: 2px solid #4CAF50;
+  box-sizing: border-box;
+}
+
+input[type=text] {
+  background-color: #000;
+  color: #e0ffff;
+  border:none;
+  border-bottom:2px solid green;
+  margin:10px 10px;
+  border-radius: 4px;
+  padding:12px 12px;
+  display: table-cell;
+}
+.submitBtn {
+
+  background-color: #64D5A4;
+  color: white;
+}
+.submitBtn:hover {
+
+  background-color: #28875E;
+  color: white;
+}
